@@ -1,0 +1,37 @@
+{
+  "name": "supplier-product-management",
+  "version": "1.0.0",
+  "description": "Hệ thống quản lý sản phẩm và nhà cung cấp với Node.js, Express, MongoDB và Bootstrap",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node seeds/migration.js",
+    "clean": "node seeds/cleanup.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "mongoose",
+    "bootstrap",
+    "crud",
+    "mvc",
+    "api",
+    "web-app"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

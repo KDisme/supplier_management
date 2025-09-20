@@ -1,0 +1,144 @@
+<% 
+    const title = 'Thêm Sản phẩm';
+    const currentPage = 'products';
+%>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/products" class="text-decoration-none">Sản phẩm</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </nav>
+
+            <!-- Form Card -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-plus-circle me-2"></i>Thêm Sản phẩm mới
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <!-- Error Alert -->
+                    <% if (typeof error !== 'undefined') { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <%= error %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    <% } %>
+
+                    <form method="POST" action="/products" class="needs-validation" novalidate>
+                        <div class="row">
+                            <!-- Tên sản phẩm -->
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">
+                                    <i class="fas fa-tag text-primary me-1"></i>Tên sản phẩm <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="name" name="name" 
+                                       value="<%= typeof product !== 'undefined' ? product.name : '' %>" 
+                                       placeholder="Nhập tên sản phẩm" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập tên sản phẩm.
+                                </div>
+                            </div>
+
+                            <!-- Số lượng -->
+                            <div class="col-md-6 mb-3">
+                                <label for="quantity" class="form-label">
+                                    <i class="fas fa-cubes text-primary me-1"></i>Số lượng <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" 
+                                       value="<%= typeof product !== 'undefined' ? product.quantity : '0' %>" 
+                                       min="0" placeholder="0" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập số lượng hợp lệ.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Giá -->
+                            <div class="col-md-6 mb-3">
+                                <label for="price" class="form-label">
+                                    <i class="fas fa-dollar-sign text-primary me-1"></i>Giá <span class="text-danger">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="price" name="price" 
+                                           value="<%= typeof product !== 'undefined' ? product.price : '' %>" 
+                                           min="0" step="1000" placeholder="0" required>
+                                    <span class="input-group-text">VNĐ</span>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập giá sản phẩm hợp lệ.
+                                </div>
+                            </div>
+
+                            <!-- Nhà cung cấp -->
+                            <div class="col-md-6 mb-3">
+                                <label for="oid_supplier" class="form-label">
+                                    <i class="fas fa-truck text-primary me-1"></i>Nhà cung cấp <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="oid_supplier" name="oid_supplier" required>
+                                    <option value="">Chọn nhà cung cấp</option>
+                                    <% suppliers.forEach(supplier => { %>
+                                        <option value="<%= supplier.oid %>" 
+                                                <%= typeof product !== 'undefined' && product.oid_supplier === supplier.oid ? 'selected' : '' %>>
+                                            <%= supplier.name %>
+                                        </option>
+                                    <% }) %>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn nhà cung cấp.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex gap-2 justify-content-end border-top pt-3">
+                            <a href="/products" class="btn btn-outline-secondary">
+                                <i class="fas fa-times me-1"></i>Hủy
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>Lưu sản phẩm
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Form Validation Script -->
+<% const pageScripts = `
+<script>
+    // Bootstrap form validation
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+    // Price formatting
+    document.getElementById('price').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/[^0-9]/g, '');
+        if (value) {
+            e.target.value = value;
+        }
+    });
+</script>
+`; %>

@@ -1,0 +1,248 @@
+{
+	"info": {
+		"name": "Supplier Product Management API",
+		"description": "API collection for testing CRUD operations on Suppliers and Products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Suppliers",
+			"item": [
+				{
+					"name": "Get All Suppliers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/suppliers",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "suppliers"]
+						}
+					}
+				},
+				{
+					"name": "Create Supplier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Công ty TNHH ABC\",\n  \"address\": \"123 Đường Nguyễn Văn A, Quận 1, TP.HCM\",\n  \"phone\": \"0901234567\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/suppliers",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "suppliers"]
+						}
+					}
+				},
+				{
+					"name": "Get Supplier Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/suppliers/:supplierId",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "suppliers", ":supplierId"],
+							"variable": [
+								{
+									"key": "supplierId",
+									"value": "SUPPLIER_OID_HERE"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Supplier",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Công ty TNHH ABC - Updated\",\n  \"address\": \"456 Đường Nguyễn Văn B, Quận 2, TP.HCM\",\n  \"phone\": \"0907654321\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/suppliers/:supplierId",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "suppliers", ":supplierId"],
+							"variable": [
+								{
+									"key": "supplierId",
+									"value": "SUPPLIER_OID_HERE"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Supplier",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/suppliers/:supplierId",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "suppliers", ":supplierId"],
+							"variable": [
+								{
+									"key": "supplierId",
+									"value": "SUPPLIER_OID_HERE"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/products",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products"]
+						}
+					}
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Laptop Dell XPS 13\",\n  \"price\": 25000000,\n  \"quantity\": 10,\n  \"oid_supplier\": \"SUPPLIER_OID_HERE\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/products",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products"]
+						}
+					}
+				},
+				{
+					"name": "Get Product Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/:productId",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products", ":productId"],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "PRODUCT_OID_HERE"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Laptop Dell XPS 13 - Updated\",\n  \"price\": 27000000,\n  \"quantity\": 15,\n  \"oid_supplier\": \"SUPPLIER_OID_HERE\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/products/:productId",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products", ":productId"],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "PRODUCT_OID_HERE"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/products/:productId",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "products", ":productId"],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "PRODUCT_OID_HERE"
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}

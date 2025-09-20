@@ -1,0 +1,58 @@
+<% 
+    const title = 'Lỗi - ' + message;
+%>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center py-5">
+                <!-- Error Icon -->
+                <div class="mb-4">
+                    <i class="fas fa-exclamation-triangle fa-5x text-danger"></i>
+                </div>
+
+                <!-- Error Card -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-danger text-white">
+                        <h3 class="mb-0">
+                            <i class="fas fa-times-circle me-2"></i>Đã xảy ra lỗi!
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-light border-danger">
+                            <h5 class="text-danger mb-3">
+                                <i class="fas fa-info-circle me-2"></i>Chi tiết lỗi:
+                            </h5>
+                            <p class="mb-0 lead"><%= message %></p>
+                        </div>
+
+                        <div class="mt-4">
+                            <p class="text-muted">Bạn có thể thử các hành động sau:</p>
+                            <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                <button onclick="history.back()" class="btn btn-outline-secondary">
+                                    <i class="fas fa-arrow-left me-1"></i>Quay lại
+                                </button>
+                                <a href="/" class="btn btn-primary">
+                                    <i class="fas fa-home me-1"></i>Trang chủ
+                                </a>
+                                <a href="/suppliers" class="btn btn-success">
+                                    <i class="fas fa-truck me-1"></i>Nhà cung cấp
+                                </a>
+                                <a href="/products" class="btn btn-info">
+                                    <i class="fas fa-box me-1"></i>Sản phẩm
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Help Section -->
+                <div class="mt-4">
+                    <small class="text-muted">
+                        Nếu lỗi tiếp tục xảy ra, vui lòng liên hệ quản trị viên hệ thống.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
